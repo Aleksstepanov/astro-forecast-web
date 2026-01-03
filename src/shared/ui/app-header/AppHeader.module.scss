@@ -1,0 +1,70 @@
+@use '@/shared/styles/breakpoints' as *;
+
+.appBar {
+  background: rgba(20, 20, 22, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.toolbar {
+  min-height: 64px;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.navDesktop {
+  display: none;
+  gap: 6px;
+}
+
+.navBtn {
+  opacity: 0.9;
+}
+
+.burger {
+  display: inline-flex;
+}
+
+.drawer {
+  width: min(320px, 80vw);
+  padding: 16px;
+}
+
+.drawerTitle {
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.drawerList {
+  padding-top: 0;
+}
+
+@include md {
+  .navDesktop {
+    display: flex;
+  }
+
+  .burger {
+    display: none;
+  }
+}

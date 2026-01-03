@@ -1,0 +1,22 @@
+@use '@/shared/styles/breakpoints' as *;
+
+.root {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  padding: 16px 0;
+}
+
+.container {
+  // контейнер у MUI уже норм, но пусть будет аккуратная страховка
+}
+
+@include md {
+  .main {
+    padding: 24px 0;
+  }
+}
