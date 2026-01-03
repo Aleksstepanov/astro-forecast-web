@@ -9,11 +9,11 @@ export const ForecastPage = () => {
   return (
     <Box className={s.root}>
       <Box className={s.header}>
-        <Typography variant="h4" className={s.title}>
+        <Typography variant="h4" fontWeight={800}>
           Астропрогноз наблюдений
         </Typography>
-        <Typography variant="body1" className={s.subtitle}>
-          Выбери город и период — покажем лучшие окна и понятный вердикт.
+        <Typography color="text.secondary">
+          Лучшее время для наблюдения звёзд — без лишней магии.
         </Typography>
       </Box>
 

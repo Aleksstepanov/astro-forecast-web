@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import {
   AppBar,
   Box,
@@ -13,66 +13,68 @@ import {
   Typography,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import s from './AppHeader.module.scss';
+import { Link } from 'react-router-dom';
 
-type NavItem = {
-  label: string;
-  href: string; // пока через href, потом легко сменить на react-router Link
-};
+import s from './AppHeader.module.scss';
+import { ROUTE_MAP, ROUTE_NAMES, NAV_ITEMS } from '@/shared/constants';
 
 export const AppHeader = () => {
-  const nav = useMemo<NavItem[]>(
-    () => [
-      { label: 'Прогноз', href: '/' },
-      { label: 'Как это работает', href: '/how-it-works' },
-      { label: 'Privacy', href: '/privacy' },
-    ],
-    [],
-  );
-
   const [open, setOpen] = useState(false);
+
+  const openDrawer = () => setOpen(true);
+  const closeDrawer = () => setOpen(false);
 
   return (
     <AppBar position="sticky" elevation={0} className={s.appBar}>
       <Toolbar disableGutters className={s.toolbar}>
         <Container maxWidth="lg" className={s.inner}>
           <Box className={s.left}>
-            <Typography variant="h6" className={s.logo} component="a" href="/">
+            <Typography
+              variant="h6"
+              className={s.logo}
+              component={Link}
+              to={ROUTE_MAP[ROUTE_NAMES.FORECAST]}
+            >
               Astro
             </Typography>
 
-            {/* Desktop nav */}
             <Box className={s.navDesktop}>
-              {nav.map((item) => (
-                <Button key={item.href} href={item.href} className={s.navBtn} color="inherit">
+              {NAV_ITEMS.map((item) => (
+                <Button
+                  key={item.route}
+                  component={Link}
+                  to={ROUTE_MAP[item.route]}
+                  className={s.navBtn}
+                  color="inherit"
+                >
                   {item.label}
                 </Button>
               ))}
             </Box>
           </Box>
 
-          {/* Mobile burger */}
           <IconButton
             className={s.burger}
             color="inherit"
-            onClick={() => setOpen(true)}
-            aria-label="Open menu"
+            onClick={openDrawer}
+            aria-label="Открыть меню"
+            edge="end"
           >
             <MenuIcon />
           </IconButton>
         </Container>
       </Toolbar>
 
-      <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
-        <Box className={s.drawer}>
+      <Drawer anchor="right" open={open} onClose={closeDrawer} ModalProps={{ keepMounted: true }}>
+        <Box className={s.drawer} role="presentation">
           <Typography variant="subtitle1" className={s.drawerTitle}>
             Меню
           </Typography>
 
           <List className={s.drawerList}>
-            {nav.map((item) => (
-              <ListItem key={item.href} disablePadding>
-                <ListItemButton component="a" href={item.href} onClick={() => setOpen(false)}>
+            {NAV_ITEMS.map((item) => (
+              <ListItem key={item.route} disablePadding>
+                <ListItemButton component={Link} to={ROUTE_MAP[item.route]} onClick={closeDrawer}>
                   {item.label}
                 </ListItemButton>
               </ListItem>
