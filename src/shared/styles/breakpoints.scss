@@ -1,0 +1,73 @@
+$bp-sm: 600px;
+$bp-md: 900px;
+$bp-lg: 1200px;
+$bp-xl: 1536px;
+
+@mixin sm {
+  @media (min-width: $bp-sm) {
+    @content;
+  }
+}
+@mixin md {
+  @media (min-width: $bp-md) {
+    @content;
+  }
+}
+@mixin lg {
+  @media (min-width: $bp-lg) {
+    @content;
+  }
+}
+@mixin xl {
+  @media (min-width: $bp-xl) {
+    @content;
+  }
+}
+
+@mixin down-sm {
+  @media (max-width: ($bp-sm - 1px)) {
+    @content;
+  }
+}
+@mixin down-md {
+  @media (max-width: ($bp-md - 1px)) {
+    @content;
+  }
+}
+@mixin down-lg {
+  @media (max-width: ($bp-lg - 1px)) {
+    @content;
+  }
+}
+@mixin down-xl {
+  @media (max-width: ($bp-xl - 1px)) {
+    @content;
+  }
+}
+
+@mixin ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin lineClamp($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin hideScrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin bgImg($size: cover, $position: center) {
+  background-repeat: no-repeat;
+  background-size: $size;
+  background-position: $position;
+}

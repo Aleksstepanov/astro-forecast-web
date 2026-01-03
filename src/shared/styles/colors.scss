@@ -1,0 +1,63 @@
+$primary-colors: (
+  red: #ff4d4f,
+  orange: #ff8200,
+  yellow: #fadb14,
+  green: #52c41a,
+  lightblue: #5bd9e5,
+  blue: #1677ff,
+  purple: #5f259f,
+  gray: #292a33,
+  black: black,
+  white: white,
+);
+
+$alpha-chennels: (
+  50: 5%,
+  100: 11%,
+  200: 21%,
+  300: 41%,
+  400: 61%,
+  500: 81%,
+  600: 100%,
+  700: 81%,
+  800: 61%,
+  900: 41%,
+);
+
+$background-colors: (
+  light: white,
+  dark: black,
+);
+
+@function mix-colors-by-type($color, $type) {
+  @if $type == 600 {
+    @return $color;
+  }
+
+  $alpha: map-get($alpha-chennels, $type);
+  $background-color: map-get($background-colors, light);
+
+  @if $type > 600 {
+    $background-color: map-get($background-colors, dark);
+  }
+
+  @return mix($color, $background-color, $alpha);
+}
+
+@function get-color-by-type($color, $type: false) {
+  @if $type {
+    @return mix-colors-by-type($color, $type);
+  }
+
+  @return $color;
+}
+
+@function get-color($color, $type: false) {
+  $primary-color: map-get($primary-colors, $color);
+
+  @if $primary-color {
+    @return get-color-by-type($primary-color, $type);
+  }
+
+  @return get-color-by-type($color, $type);
+}
