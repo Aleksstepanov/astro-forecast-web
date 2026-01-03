@@ -1,0 +1,63 @@
+@use '@/shared/styles/breakpoints' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 0;
+}
+
+.title {
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.subtitle {
+  opacity: 0.8;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.controls,
+.summary,
+.chart,
+.hourly {
+  min-width: 0;
+}
+
+@include lg {
+  .grid {
+    grid-template-columns: 420px 1fr;
+    grid-template-areas:
+      'controls summary'
+      'controls chart'
+      'controls hourly';
+    align-items: start;
+    gap: 16px;
+  }
+
+  .controls {
+    grid-area: controls;
+    position: sticky;
+    top: 88px;
+  }
+  .summary {
+    grid-area: summary;
+  }
+  .chart {
+    grid-area: chart;
+  }
+  .hourly {
+    grid-area: hourly;
+  }
+}
