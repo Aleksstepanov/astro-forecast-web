@@ -1,24 +1,87 @@
+# ===============================
+# OS / Editor
+# ===============================
+.DS_Store
+Thumbs.db
+
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ===============================
 # Logs
+# ===============================
 logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# ===============================
+# Node / JS
+# ===============================
+node_modules/
+.pnp
+.pnp.js
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+# ===============================
+# Build outputs
+# ===============================
+dist/
+build/
+out/
+
+# ===============================
+# Vite
+# ===============================
+.vite/
+
+# ===============================
+# Env files
+# ===============================
+.env
+.env.*
+!.env.example
+
+# ===============================
+# Backend (NestJS)
+# ===============================
+coverage/
+.nyc_output/
+.tmp/
+
+# ===============================
+# Docker
+# ===============================
+docker-data/
+docker-volumes/
+*.pid
+
+# ===============================
+# Database
+# ===============================
+*.sqlite
+*.db
+*.sql
+
+# ===============================
+# Cache / Runtime
+# ===============================
+.cache/
+.tmp/
+temp/
+
+# ===============================
+# Test
+# ===============================
+jest-cache/
+playwright-report/
+test-results/
+
+# ===============================
+# Misc
+# ===============================
+*.tgz
+*.tar.gz
