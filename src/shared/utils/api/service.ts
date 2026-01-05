@@ -6,6 +6,7 @@ import type { TApiService } from './types';
 
 export const createApiService = (config?: CreateAxiosDefaults): TApiService => {
   const instance: TApiService = axios.create(config);
+  console.log('config', config)
   const abortRegistry = AbortRegistry.getRegistry();
 
   instance.interceptors.request.use((axiosConfig) => {
