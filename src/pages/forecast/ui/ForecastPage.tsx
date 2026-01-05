@@ -4,8 +4,12 @@ import { ForecastSummary } from '@/widgets/forecast-summary';
 import { ForecastChartStub } from '@/widgets/forecast-chart-stub';
 import { ForecastHourlyStub } from '@/widgets/forecast-hourly-stub';
 import s from './ForecastPage.module.scss';
+import { useForecastQuery } from '@/entities/forecast/model';
+import { ForecastLoadingOverlay } from '@/widgets/forecast-loading-overlay';
 
 export const ForecastPage = () => {
+  const forecast = useForecastQuery();
+
   return (
     <Box className={s.root}>
       <Box className={s.header}>
@@ -16,6 +20,8 @@ export const ForecastPage = () => {
           Лучшее время для наблюдения звёзд — без лишней магии.
         </Typography>
       </Box>
+
+      <ForecastLoadingOverlay active={forecast.isFetching} />
 
       <Box className={s.grid}>
         <Box className={s.controls}>

@@ -15,5 +15,7 @@ export type TSelectrorsLocations = { selectedLocationId: TLocationId | null };
 export type TLocationUi = {
   id: string;
   title: string;
+  lat: number;
+  lon: number;
   tz: string;
 };
