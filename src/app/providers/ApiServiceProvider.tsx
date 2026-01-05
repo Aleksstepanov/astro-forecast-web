@@ -9,10 +9,9 @@ const ApiServiceContext = createContext<TApiService | null>(null);
 export const ApiServiceProvider = ({ children }: ApiServiceProviderProps) => {
   const apiService = useMemo(() => {
     const BASE_URL = import.meta.env.PROD ? import.meta.env.VITE_API_URL || '' : '';
-
+    console.log('import.meta.env.VITE_API_URL', import.meta.env.VITE_API_URL);
     return createApiService({
-      baseURL: `${BASE_URL}/api/v1`,
-      // withCredentials: true, // включи если нужно
+      baseURL: `${BASE_URL}/api/`,
     });
   }, []);
 
