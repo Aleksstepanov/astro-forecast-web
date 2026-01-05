@@ -2,7 +2,7 @@ import type { TApiService } from '@/shared/utils/api';
 import { ForecastResponseDtoSchema, type TForecastResponseDto } from '../schemas';
 import { API, GET_FORECAST_REQUEST_ID } from '../consts';
 
-export type TForecastQuery = {
+export type TForecastQueryParams = {
   lat: number;
   lon: number;
   tz: string;
@@ -16,7 +16,7 @@ export class GetForecastEndpoint {
     this.api = api;
   }
 
-  get = async (params: TForecastQuery): Promise<TForecastResponseDto> => {
+  get = async (params: TForecastQueryParams): Promise<TForecastResponseDto> => {
     const { data } = await this.api.get(API.GET_LIST(params), {
       requestId: GET_FORECAST_REQUEST_ID,
     });
