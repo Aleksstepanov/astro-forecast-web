@@ -1,8 +1,8 @@
 import { Box, Typography } from '@mui/material';
 import { ForecastControls } from '@/widgets/forecast-controls';
 import { ForecastSummary } from '@/widgets/forecast-summary';
-import { ForecastChartStub } from '@/widgets/forecast-chart-stub';
-import { ForecastHourlyStub } from '@/widgets/forecast-hourly-stub';
+import { ForecastChart } from '@/widgets/forecast-chart';
+import { ForecastHourly } from '@/widgets/forecast-hourly';
 import s from './ForecastPage.module.scss';
 import { useForecastQuery } from '@/entities/forecast/model';
 import { ForecastLoadingOverlay } from '@/widgets/forecast-loading-overlay';
@@ -33,11 +33,11 @@ export const ForecastPage = () => {
         </Box>
 
         <Box className={s.chart}>
-          <ForecastChartStub />
+          <ForecastChart />
         </Box>
 
         <Box className={s.hourly}>
-          <ForecastHourlyStub />
+          <ForecastHourly />
         </Box>
       </Box>
     </Box>
